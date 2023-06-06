@@ -1,9 +1,11 @@
 export default function About() {
   return (
-    <div className="d-flex align-items-center justify-content-center vh-100 p-5">
+    <div className="container mt-5">
       <h1>
-        Sadly there is no translation api for free, so i recomend using google
-        extension "mate translate" to translate the subtitles
+        Whole page is for people who want to lose weight. You can add your food
+        to the list and see how many calories you have eaten. You can also edit
+        and delete your food. You can also see the total calories you have eaten
+        on the page.
       </h1>
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, ChangeEvent } from "react";
+import { useEffect, useState, ChangeEvent } from "react";
 import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import TextField from "@mui/material/TextField";
@@ -11,6 +11,7 @@ import ListItemSecondaryAction from "@mui/material/ListItemSecondaryAction";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import Typography from "@mui/material/Typography";
 
 interface ShoppingListItem {
   id?: number;
@@ -137,7 +138,7 @@ export function ShoppingList() {
         console.error("Error updating item:", error);
       });
   };
-
+  const totalKcal = shoppingList.reduce((sum, item) => sum + item.kcal, 0);
   return (
     <div className="container mt-5">
       <h1>Shopping List</h1>
@@ -175,14 +176,19 @@ export function ShoppingList() {
           </ListItem>
         ))}
       </List>
-      <Button
-        className="mt-2"
-        variant="contained"
-        color="primary"
-        onClick={openModal}
-      >
-        Add Item
-      </Button>
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <Typography variant="subtitle1">Total kcal: {totalKcal}</Typography>
+        <Button
+          className="mt-2"
+          variant="contained"
+          color="primary"
+          onClick={openModal}
+          style={{ marginLeft: "auto" }}
+        >
+          Add Item
+        </Button>
+      </div>
+
       <Modal open={isModalOpen} onClose={closeModal}>
         <Box
           sx={{
